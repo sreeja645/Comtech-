@@ -6,53 +6,66 @@
     <title>Battery Optimization Dashboard</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
             text-align: center;
+            margin: 0;
+            padding: 0;
         }
         .container {
             width: 80%;
             margin: auto;
-            padding: 20px;
+            padding: 30px;
         }
         .stats {
             display: flex;
             justify-content: space-around;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
             margin-bottom: 20px;
         }
         .stat {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
-            padding: 15px;
+            padding: 20px;
             border-radius: 10px;
-            color: white;
+            transition: transform 0.3s ease-in-out;
+        }
+        .stat:hover {
+            transform: scale(1.1);
         }
         .stat:nth-child(1) { background-color: #ff5733; }
         .stat:nth-child(2) { background-color: #33aaff; }
         .stat:nth-child(3) { background-color: #33cc33; }
+        
         .suggestions {
-            padding: 15px;
-            background-color: #f8f8f8;
-            border-radius: 10px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
         }
         #advice {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            color: red;
+            color: #ffcc00;
+            transition: color 0.5s ease-in-out;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Battery Optimization Dashboard</h1>
+        <h1>🚗 Battery Optimization Dashboard 🔋</h1>
         <div class="stats">
             <div class="stat">Speed: <span id="speed">0</span> km/h</div>
             <div class="stat">Brake Intensity: <span id="brake">Normal</span></div>
             <div class="stat">Temperature: <span id="temperature">25</span>&deg;C</div>
         </div>
         <div class="suggestions">
-            <h2>Suggestions:</h2>
+            <h2>⚡ Suggestions ⚡</h2>
             <p id="advice">Drive safely and maintain optimal speed.</p>
         </div>
     </div>
@@ -68,18 +81,18 @@
             
             let advice = "";
             if (speed > 80) {
-                advice = "Reduce speed to optimize battery performance.";
+                advice = "⚠️ Reduce speed to optimize battery performance.";
             } else if (brakeIntensity === "Harsh") {
-                advice = "Avoid harsh braking to save battery life.";
+                advice = "🚦 Avoid harsh braking to save battery life.";
             } else if (temperature > 35) {
-                advice = "Battery performance may degrade in high temperatures. Stay cautious.";
+                advice = "🌡️ Battery performance may degrade in high temperatures. Stay cautious.";
             } else {
-                advice = "Drive safely and maintain optimal speed.";
+                advice = "✅ Drive safely and maintain optimal speed.";
             }
             
             document.getElementById("advice").innerText = advice;
         }
-        setInterval(updateStats, 2000); // Simulate real-time data update every 2 seconds
+        setInterval(updateStats, 2000);
     </script>
 </body>
 </html>
