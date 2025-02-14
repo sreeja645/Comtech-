@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Optimization Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .stat {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+        }
+        .stat:nth-child(1) { background-color: #ff5733; }
+        .stat:nth-child(2) { background-color: #33aaff; }
+        .stat:nth-child(3) { background-color: #33cc33; }
+        .suggestions {
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+        }
+        #advice {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Battery Optimization Dashboard</h1>
+        <div class="stats">
+            <div class="stat">Speed: <span id="speed">0</span> km/h</div>
+            <div class="stat">Brake Intensity: <span id="brake">Normal</span></div>
+            <div class="stat">Temperature: <span id="temperature">25</span>&deg;C</div>
+        </div>
+        <div class="suggestions">
+            <h2>Suggestions:</h2>
+            <p id="advice">Drive safely and maintain optimal speed.</p>
+        </div>
+    </div>
+    <script>
+        function updateStats() {
+            let speed = Math.floor(Math.random() * 120);
+            let brakeIntensity = ["Normal", "Harsh", "Smooth"][Math.floor(Math.random() * 3)];
+            let temperature = Math.floor(Math.random() * 40);
+            
+            document.getElementById("speed").innerText = speed;
+            document.getElementById("brake").innerText = brakeIntensity;
+            document.getElementById("temperature").innerText = temperature;
+            
+            let advice = "";
+            if (speed > 80) {
+                advice = "Reduce speed to optimize battery performance.";
+            } else if (brakeIntensity === "Harsh") {
+                advice = "Avoid harsh braking to save battery life.";
+            } else if (temperature > 35) {
+                advice = "Battery performance may degrade in high temperatures. Stay cautious.";
+            } else {
+                advice = "Drive safely and maintain optimal speed.";
+            }
+            
+            document.getElementById("advice").innerText = advice;
+        }
+        setInterval(updateStats, 2000); // Simulate real-time data update every 2 seconds
+    </script>
+</body>
+</html>
